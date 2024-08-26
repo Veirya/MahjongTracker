@@ -28,8 +28,7 @@ class HandFrame:
         self.rtn = handData["rtn"]  # Ron/Tsumo/Neither
         self.left = handData["left"]    # How many tiles left in the wall
         self.where = handData["where"]  # Where was what you needed (tenpai)
-        # TODO: Probably want this eventually
-        #self.start = handData["start"]
+        self.start = handData["start"]  # Dealt hand + first draw
         
         # Then do arrangements
         self._arrange_hand()
@@ -52,8 +51,7 @@ class HandFrame:
         data["rtn"] = self.won
         data["left"] = self.left
         data["where"] = self.where
-        # TODO: If this gets implemented
-        #data["start"] = self.start
+        data["start"] = self.start
         
         return data
     # end def

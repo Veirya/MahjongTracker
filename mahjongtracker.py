@@ -39,20 +39,32 @@ class MahjongTracker:
         ## Control Frame ##
         # Hosts the control buttons. Not encapsulated in its own class as the
         # controls regularly interface with the main app.
-        self.controlFrame = tk.Frame(self.master,bg=self.bg, bd=2)
-        self.quitButton = tk.Button(self.controlFrame, bg='red', text='Quit',
-                                    command=self._exit_app, height=2)
-        self.saveButton = tk.Button(self.controlFrame, bg='light gray',
+        self.controlFrame = tk.Frame(self.master,bg=self.bg, bd=2,
+                                     relief='solid')
+        self.quitButton = tk.Button(
+                                    self.controlFrame, bg='red', text='Quit',
+                                    command=self._exit_app, height=2,
+                                    font=self.buttonFont
+                                    )
+        self.saveButton = tk.Button(
+                                    self.controlFrame, bg='light gray',
                                     text='Save', command=self._save_hands,
-                                    height=2)
-        self.reloadButton = tk.Button(self.controlFrame, bg='light gray',
+                                    height=2, font=self.buttonFont
+                                    )
+        self.reloadButton = tk.Button(
+                                      self.controlFrame, bg='light gray',
                                       text='Reload', command=self._load_hands,
-                                      height=2)
-        self.addStatus = tk.Label(self.controlFrame, bg=self.bg,
-                                  textvariable=self.addStatText)
-        self.addButton = tk.Button(self.controlFrame, bg='light gray',
+                                      height=2, font=self.buttonFont
+                                      )
+        self.addStatus = tk.Label(
+                                  self.controlFrame, bg=self.bg,
+                                  textvariable=self.addStatText
+                                  )
+        self.addButton = tk.Button(
+                                   self.controlFrame, bg='light gray',
                                    text='Add Hand', command=self._add_hand,
-                                   height=2)
+                                   height=2, font=self.buttonFont,
+                                   )
         
         ## Input Frame ##
         # Hosts the input fields, boxes, and buttons
@@ -108,19 +120,15 @@ class MahjongTracker:
         self.handViewer.get_outer().grid(row=0, column=0, rowspan=8,
                                          columnspan=11, sticky='news')
         
-        self.controlFrame.grid(row=0, column=11, rowspan=8, columnspan=2,
+        self.controlFrame.grid(row=0, column=11, rowspan=10, columnspan=2,
                                sticky='news')
         self.quitButton.pack(fill='both', side='top', expand=0)
-        self.quitButton['font'] = self.buttonFont
         self.saveButton.pack(fill='both', side='top', expand=0)
-        self.saveButton['font'] = self.buttonFont
         self.reloadButton.pack(fill='both', side='top', expand=0)
-        self.reloadButton['font'] = self.buttonFont
-        self.addButton.pack(fill='both', side='bottom', expand=0)
-        self.addButton['font'] = self.buttonFont
+        self.addButton.pack(fill='both', side='bottom', expand=0, pady=(0,5))
         
         self.inputFrame.get_frame().grid(row=8, column=0, rowspan=2,
-                                         columnspan=12, sticky='news')
+                                         columnspan=11, sticky='news')
     # end def
     
     def _exit_app(self):
