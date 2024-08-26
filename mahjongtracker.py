@@ -14,6 +14,7 @@ import json
 import traceback
 import tkinter as tk
 from tkinter.font import Font as tkFont
+from pathlib import Path
 from Util.tilePngs import gen_img_table
 from Util.HandViewer import HandViewer
 from Util.InputFrame import InputFrame
@@ -40,7 +41,7 @@ class MahjongTracker:
         # controls regularly interface with the main app.
         self.controlFrame = tk.Frame(self.master,bg=self.bg, bd=2)
         self.quitButton = tk.Button(self.controlFrame, bg='red', text='Quit',
-                                    command=self._exit_sequence, height=2)
+                                    command=self._exit_app, height=2)
         self.saveButton = tk.Button(self.controlFrame, bg='light gray',
                                     text='Save', command=self._save_hands,
                                     height=2)
@@ -76,7 +77,9 @@ class MahjongTracker:
             self.handViewer.import_hands(data, self.tiles)
             print("Hands loaded.")
         except FileNotFoundError:
-            print("No save file was found. Skipping Load.")
+            Path.mkdir("Data", exist_ok=True)
+            open(self.sf, 'w').close()
+            print("Save file not found. Intialized save file and directory.")
     # end def
     
     '''
@@ -120,7 +123,8 @@ class MahjongTracker:
                                          columnspan=12, sticky='news')
     # end def
     
-    def _exit_sequence(self):
+    def _exit_app(self):
+        print("Saving hands and exiting app...")
         self._save_hands()
         self.master.destroy()
     
