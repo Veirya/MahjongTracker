@@ -11,11 +11,11 @@ import tkinter as tk
 import re
 
 class HandFrame:
-    def __init__(self, root, handData, images, bg):
+    def __init__(self, master, handData, images, bg, bd=0, relief='solid'):
         # Load the Basics
         self.images = images    # Tile PNGs
         self.bg = bg            # BG Color
-        self.frame = tk.Frame(root, bg=bg)  # Own tkinter frame
+        self.frame = tk.Frame(master, bg=bg, bd=bd, relief=relief)  # Own tkinter frame
         self.rawHand = handData["hand"]     # MPSZ notation string for hand
         self.hand = self._read_hand(self.rawHand)   # Labels for hand
         self.rawDora = handData["dora"]     # MPSZ notation string for doras

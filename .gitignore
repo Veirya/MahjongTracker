@@ -2,3 +2,4 @@ __pychache__/
 .spyproject/
 *.pyc
 *.pyo
+*.json

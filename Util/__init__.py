@@ -1,3 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from Util.HandFrame import HandFrame
+import Util.HandFrame
+import Util.tilePngs
+import Util.HandViewer
+import Util.InputFrame
