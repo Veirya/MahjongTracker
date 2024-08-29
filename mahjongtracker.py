@@ -97,7 +97,6 @@ class MahjongTracker:
     '''
     Save all loaded hands as JSON list. Overwrites the current save.
     '''
-    # TODO: Connect save logic to HandViewer class
     def _save_hands(self):
         print("Writing loaded hands to " + self.sf + "...")
         handData = self.handViewer.export_hands()
@@ -111,9 +110,24 @@ class MahjongTracker:
     Add a hand specified in the input section to the loaded hands.
     '''
     def _add_hand(self):
-        # TODO: Implement
-        pass
+        # Get the raw input and key map from the input frame
+        rawData = self.inputFrame.get_input()
+        # Don't do the rest if it failed and note the failure
+        if rawData == -1:
+            # TODO: Add label for fail status
+            return
+        # Pack it the way HandFrame wants it
+        handData = {}
+        for inp, key in rawData:
+            handData[key] = inp
+        # end for
+        
+        self.handViewer.add_hand(handData, self.tiles)
+    # end def
     
+    '''
+    Arrange the child frames and their grid scaling.
+    '''
     def __setup_subframes(self):
         # The grid is planned to be 10x13
         ## Hand Display ##
