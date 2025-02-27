@@ -1,4 +1,4 @@
-App made to help me track starting and ending hands for Riichi Mahjong so I can find out if I really was unlucky or if I could have played better. Made for Python 3.12 with Tkinter for graphics.
+App made to help me track starting and ending hands for Riichi Mahjong so I can find out if I really was unlucky or if I could have played better. Made for Python 3.12 with Tkinter for graphics. Run mahjongtracker.py from the root of the repository.
 
 v0.5 Supports loading/reloading hands from a JSON, saving to JSON, and adding new hand information. These hands are displayed in the window, but a lot of the readibility/labelling is missing, not all info is displayed, and horizontal scrolling isn't implemented at all.
 
